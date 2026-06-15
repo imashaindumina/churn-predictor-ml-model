@@ -1,0 +1,9 @@
+artifact_location: file:///d:/churn-predictor-ml-model/mlruns/788661443873888573
+creation_time: 1781509010966
+effective_trace_archival_retention: null
+experiment_id: '788661443873888573'
+last_update_time: 1781509010966
+lifecycle_stage: active
+name: Telco_Churn_Optimized_XGBoost
+trace_location: null
+workspace: default

@@ -1,0 +1,10 @@
+artifact_location: file:///d:/churn-predictor-ml-model/mlruns/788661443873888573/models/m-19912c1fe22d45668e1362aa5ca16c50/artifacts
+creation_timestamp: 1781509012065
+experiment_id: '788661443873888573'
+last_updated_timestamp: 1781509019526
+model_id: m-19912c1fe22d45668e1362aa5ca16c50
+model_type: null
+name: optimized_xgboost_model
+source_run_id: 5ad1e24a152342d1858ff3834b7214cc
+status: 2
+status_message: null

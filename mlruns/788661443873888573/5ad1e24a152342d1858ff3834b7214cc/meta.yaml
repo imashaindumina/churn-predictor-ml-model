@@ -1,0 +1,14 @@
+artifact_uri: file:///d:/churn-predictor-ml-model/mlruns/788661443873888573/5ad1e24a152342d1858ff3834b7214cc/artifacts
+end_time: 1781509019547
+entry_point_name: ''
+experiment_id: '788661443873888573'
+lifecycle_stage: active
+run_id: 5ad1e24a152342d1858ff3834b7214cc
+run_name: delightful-snail-625
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781509011362
+status: 3
+tags: []
+user_id: ASUS
