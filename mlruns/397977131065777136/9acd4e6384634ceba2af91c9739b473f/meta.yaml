@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/churn-predictor-ml-model/mlruns/397977131065777136/9acd4e6384634ceba2af91c9739b473f/artifacts
+end_time: 1781765796747
+entry_point_name: ''
+experiment_id: '397977131065777136'
+lifecycle_stage: active
+run_id: 9acd4e6384634ceba2af91c9739b473f
+run_name: clumsy-lynx-185
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781765796706
+status: 4
+tags: []
+user_id: ASUS

@@ -1,0 +1,9 @@
+artifact_location: file:///D:/churn-predictor-ml-model/mlruns/397977131065777136
+creation_time: 1781759714713
+effective_trace_archival_retention: null
+experiment_id: '397977131065777136'
+last_update_time: 1781759714713
+lifecycle_stage: active
+name: Telco Churn - Production Pipeline
+trace_location: null
+workspace: default

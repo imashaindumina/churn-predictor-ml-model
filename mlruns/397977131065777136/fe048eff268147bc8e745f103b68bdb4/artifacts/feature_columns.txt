@@ -1,0 +1,10 @@
+tenure
+TotalCharges
+SeniorCitizen
+Contract_One year
+Contract_Two year
+InternetService_Fiber optic
+InternetService_No
+PaymentMethod_Electronic check
+OnlineSecurity_Yes
+PaperlessBilling

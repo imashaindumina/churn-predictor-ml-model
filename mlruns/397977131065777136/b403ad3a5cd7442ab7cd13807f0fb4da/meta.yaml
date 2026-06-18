@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/churn-predictor-ml-model/mlruns/397977131065777136/b403ad3a5cd7442ab7cd13807f0fb4da/artifacts
+end_time: 1781765714953
+entry_point_name: ''
+experiment_id: '397977131065777136'
+lifecycle_stage: active
+run_id: b403ad3a5cd7442ab7cd13807f0fb4da
+run_name: gifted-bear-189
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781765714894
+status: 4
+tags: []
+user_id: ASUS

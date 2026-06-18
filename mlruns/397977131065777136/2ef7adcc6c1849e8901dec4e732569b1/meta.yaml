@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/churn-predictor-ml-model/mlruns/397977131065777136/2ef7adcc6c1849e8901dec4e732569b1/artifacts
+end_time: 1781765596503
+entry_point_name: ''
+experiment_id: '397977131065777136'
+lifecycle_stage: active
+run_id: 2ef7adcc6c1849e8901dec4e732569b1
+run_name: aged-vole-531
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781765596464
+status: 4
+tags: []
+user_id: ASUS

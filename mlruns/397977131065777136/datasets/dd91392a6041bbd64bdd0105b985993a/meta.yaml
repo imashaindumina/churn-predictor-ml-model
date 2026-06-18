@@ -1,0 +1,14 @@
+digest: 3b88c333
+name: dataset
+profile: '{"num_rows": 7043, "num_elements": 77473}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "tenure", "required": true},
+  {"type": "double", "name": "TotalCharges", "required": true}, {"type": "long", "name":
+  "SeniorCitizen", "required": true}, {"type": "long", "name": "Contract_One year",
+  "required": true}, {"type": "long", "name": "Contract_Two year", "required": true},
+  {"type": "long", "name": "InternetService_Fiber optic", "required": true}, {"type":
+  "long", "name": "InternetService_No", "required": true}, {"type": "long", "name":
+  "PaymentMethod_Electronic check", "required": true}, {"type": "long", "name": "OnlineSecurity_Yes",
+  "required": true}, {"type": "long", "name": "PaperlessBilling", "required": true},
+  {"type": "long", "name": "Churn", "required": true}]}'
+source: '{"uri": "training_data"}'
+source_type: local

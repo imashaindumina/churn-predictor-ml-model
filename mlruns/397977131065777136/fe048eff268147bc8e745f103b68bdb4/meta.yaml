@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/churn-predictor-ml-model/mlruns/397977131065777136/fe048eff268147bc8e745f103b68bdb4/artifacts
+end_time: 1781765838973
+entry_point_name: ''
+experiment_id: '397977131065777136'
+lifecycle_stage: active
+run_id: fe048eff268147bc8e745f103b68bdb4
+run_name: clumsy-midge-512
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781765834224
+status: 3
+tags: []
+user_id: ASUS
