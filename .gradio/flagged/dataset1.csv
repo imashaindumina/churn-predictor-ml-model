@@ -1,0 +1,9 @@
+Gender,Partner,Dependents,"Senior Citizen Status (1=Yes, 0=No)",Phone Service,Multiple Lines,Internet Service,Online Security,Online Backup,Device Protection,Tech Support,Streaming TV,Streaming Movies,Contract,Paperless Billing,Payment Method,Tenure (Total Active Months),Monthly Statement Unit Charges ($),Total Aggregated Ledger Charges ($),Operational Churn Decision Output,timestamp
+Male,No,No,0,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,1,87,80,,2026-06-18 13:21:48.423381
+Female,No,No,1,Yes,Yes,DSL,No internet service,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,1,85,85,✅ Error: Churn Prediction Engine is offline (Model not loaded).,2026-06-25 09:29:21.176439
+Female,Yes,Yes,0,Yes,No,Fiber optic,No,Yes,No,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,4,90,86,,2026-06-25 09:29:54.687695
+Female,Yes,Yes,0,Yes,No,Fiber optic,No,Yes,No,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,4,90,86,,2026-06-25 09:29:58.371517
+Female,Yes,Yes,0,Yes,No,Fiber optic,No,Yes,No,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,4,90,86,✅ Error: Churn Prediction Engine is offline (Model not loaded).,2026-06-25 09:30:06.201107
+Male,No,No,0,Yes,No phone service,Fiber optic,No,No,Yes,No,No internet service,Yes,Month-to-month,Yes,Bank transfer (automatic),7,86,90,"⚠️ Likely to churn
+
+[SYSTEM NOTICE] Automated retention email offer has been dispatched to this customer account instantly!",2026-06-26 06:58:02.677300
