@@ -1,63 +1,72 @@
+"""
+INFERENCE LAYER - Production Model Serving & Agentic AI Ingestion
+"""
+
 import os
+import pickle
 import pandas as pd
-import mlflow
 from google import genai
 from src.features.build_features import build_features
 
-# Load Model
+# 1. Load the optimal production LightGBM model directly from the models cache
 model = None
-LOCAL_ARTIFACT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..", "artifacts", "model"))
-if os.path.exists(LOCAL_ARTIFACT_DIR):
+MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..", "models", "customer_churn_lgb_model.pkl"))
+
+if os.path.exists(MODEL_PATH):
     try:
-        model = mlflow.pyfunc.load_model(LOCAL_ARTIFACT_DIR)
-        print(f"✅ Success: Loaded production model from local artifacts.")
+        with open(MODEL_PATH, "rb") as file:
+            model = pickle.load(file)
+        print(f"✅ Success: Loaded optimized LightGBM model from local models cache.")
     except Exception as e:
         print(f"❌ Model loading failed: {e}")
 
 def predict_churn(input_dict: dict) -> float:
-    """Returns the raw churn probability score."""
+    """
+    Returns the raw churn probability score using the tuned LightGBM architecture.
+    """
     if model is None:
         return 0.0
     try:
         df_raw = pd.DataFrame([input_dict])
         df_ml_ready = build_features(df_raw, target_col="Churn")
         
-        if hasattr(model.metadata, "flavor_backend") and model.metadata.flavor_backend == "xgboost":
-            raw_booster = model._model_impl.xgboost_model
-            proba = raw_booster.predict_proba(df_ml_ready)[0][1]
-        else:
-            preds_raw = model.predict(df_ml_ready)
-            proba = float(preds_raw.iloc[0]) if hasattr(preds_raw, "iloc") else float(preds_raw[0])
+        # Execute prediction mapping directly against the binary estimator probabilities array
+        proba = model.predict_proba(df_ml_ready)[0][1]
         return float(proba)
     except Exception:
         return 0.0
 
 def generate_ai_email(input_dict: dict) -> str:
-    """Triggers Gemini Pro to write a highly personalized retention email."""
+    """
+    Triggers Gemini Pro to write a highly personalized retention email using the 10 core features.
+    """
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         return "❌ Setup Error: GEMINI_API_KEY missing in environment variables."
     
     try:
-        # Initialize the official new Google GenAI Client
         client = genai.Client(api_key=api_key)
         
-        # Build contextual prompt from customer features
+        # 3. Formulate the prompt using exclusively the available 10 operational parameters
         prompt = f"""
         You are an expert customer retention agent for a premium telecom company.
-        A high-value customer has been flagged by our Predictive AI as 'Likely to Churn' (risk of leaving the company).
+        A customer has been flagged by our Predictive AI as 'Likely to Churn' due to high-risk usage parameters.
         
-        Customer Profile Data:
-        - Gender: {input_dict.get('gender')}
-        - Senior Citizen: {'Yes' if input_dict.get('SeniorCitizen') == 1 else 'No'}
-        - Contract Type: {input_dict.get('Contract')}
-        - Internet Service: {input_dict.get('InternetService')}
+        Customer Profile Data (Top 10 Metrics):
         - Monthly Charges: ${input_dict.get('MonthlyCharges')}
-        - Total Tenure: {input_dict.get('tenure')} months
+        - Account Tenure: {input_dict.get('tenure')} months
+        - Payment Setup: {input_dict.get('PaymentMethod')}
+        - Contract Structure: {input_dict.get('Contract')}
+        - Security Subscription: {'Active' if input_dict.get('OnlineSecurity') == 'Yes' else 'Inactive/None'}
+        - Multiple Phone Lines: {'Active' if input_dict.get('MultipleLines') == 'Yes' else 'Inactive/None'}
+        - Paperless Billing: {'Enabled' if input_dict.get('PaperlessBilling') == 'Yes' else 'Disabled'}
+        - Dedicated Technical Support: {'Active' if input_dict.get('TechSupport') == 'Yes' else 'Inactive/None'}
+        - Online Cloud Backup: {'Active' if input_dict.get('OnlineBackup') == 'Yes' else 'Inactive/None'}
+        - Senior Citizen Demographic Status: {'Yes' if input_dict.get('SeniorCitizen') == 1 else 'No'}
         
         Task:
         Write a highly persuasive, professional, and personalized retention email to this customer. 
-        Offer a strategic incentive (e.g., a special discount or contract upgrade) based on their specific profile to convince them to stay. Keep the tone warm, welcoming, and premium. Do not use generic placeholders.
+        Offer a strategic incentive (e.g., a custom loyalty credit, premium tech support extension, or billing upgrade plan) calculated to align with their profile constraints. Keep the tone warm, welcoming, and premium. Do not use generic placeholders.
         """
         
         response = client.models.generate_content(
